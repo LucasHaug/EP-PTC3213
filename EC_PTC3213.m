@@ -2,11 +2,10 @@
 %
 %		PTC3213 - EC1 – 2019 – Método das Diferenças Finitas
 %				Solução da Equação de Laplace
-%  			        Turma ‘X’  - Professor ‘Y’
+%  			        Turma 1  - Professora Viviane
 %
-%    “Beltrano de Tal”	nUSP 11111111
-%    “Ciclano de Tal”	nUSP 22222222
-%    “Fulano de Tal”	nUSP 33333333
+%    Lucas Haug         nUSP 10773565
+%    Victor Yan Yamada  nUSP 9426703
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 clear;
@@ -19,26 +18,26 @@ clf;
 %dx=0.25;
 dx=0.5;
  
-eps0= ????  ;
-epsr= ????? ;
-sigma= ???? ;
-sigma_dual= ????  ;
+eps0= 8.854187817e-12;
+epsr= 2.5;
+sigma= 3;
+sigma_dual= 3.5;
 dy=dx;
 tol=1e-4;
 maxit=1e4;
 iter=0;
-Vmin=    ?????   ;
-Vmax=   ?????   ;
+Vmin= 0;
+Vmax= 100;
 erro=0.0;
 start= -1;       % chute inicial
 start_Dual= -1;
  
-a=  ??????  ;
-b= ????   ;
-c= ??????  ;
-d= ??????  ;
-g= ??????  ;
-h= ??????  ;
+a= 11;
+b= 5;
+c= 4;
+d= b - 3;
+g= 3;
+h= (b - d)/2;
 lx=a;
 ly=b;
 Nx=round(lx/dx)+1;
