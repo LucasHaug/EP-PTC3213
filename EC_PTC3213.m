@@ -295,10 +295,10 @@ hold off
 disp('EP - 1 : ');
 fprintf('b= %d  c= %d  d= %d  g= %d  h= %1.1g  (valores em cm)\n', b,c,d,g,h);
 fprintf('eps_r= %1.1g   Sigma = %1.1g mS/m   Sigma_dual = %1.1g mS/m \n', epsr,sigma,sigma_dual);
-disp(['Densidade superficial de Carga mínima = ',num2str(   ?????????    ),'  nC/m^2']);  
-disp(['Resistência = ',num2str(   ?????   ),'  ohms  ']);
-disp(['Capacitância = ',num2str(    ??????    ),'  pF  ']);
-disp(['Resistência Dual = ',num2str(   ?????    ),'  ohms    ']);
+disp(['Densidade superficial de Carga mínima = ',num2str(Rho_s_min),'  nC/m^2']);  
+disp(['Resistência = ',num2str(R),'  ohms  ']);
+disp(['Capacitância = ',num2str(Cap),'  pF  ']);
+disp(['Resistência Dual = ',num2str(Rdual),'  ohms    ']);
 %
 %  FIM
 %
