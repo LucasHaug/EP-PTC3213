@@ -18,26 +18,26 @@ clf;
 %dx=0.25;
 dx=0.5;
  
-eps0= 8.854187817e-12;
-epsr= 2.5;
-sigma= 3;
-sigma_dual= 3.5;
+eps0= 8.854187817e-12; %linha modificada
+epsr= 2.5; %linha modificada
+sigma= 3; %linha modificada
+sigma_dual= 3.5; %linha modificada
 dy=dx;
 tol=1e-4;
 maxit=1e4;
 iter=0;
-Vmin= 0;
-Vmax= 100;
+Vmin= 0; %linha modificada
+Vmax= 100; %linha modificada
 erro=0.0;
 start= -1;       % chute inicial
 start_Dual= -1;
  
-a= 11;
-b= 5;
-c= 4;
-d= b - 3;
-g= 3;
-h= (b - d)/2;
+a= 11; %linha modificada
+b= 5; %linha modificada
+c= 4; %linha modificada
+d= b - 3; %linha modificada
+g= 3; %linha modificada
+h= (b - d)/2; %linha modificada
 lx=a;
 ly=b;
 Nx=round(lx/dx)+1;
@@ -238,19 +238,19 @@ hold off
 %    Corrente Total
 %
 Somat=sum(Phi_new(2,:))+sum(Phi_new(Ny-1,:))+sum(Phi_new(:,2))+sum(Phi_new(:,Nx-1));
-I=  ??????;
+I= sigma*1e-3*1*Somat; %linha modificada
 %
 %   Resistencia
 %
-R=   ??????    ;
+R= (Vmax - Vmin)/I; %linha modificada
 %
 %   Capacitancia
 %
-Cap= ????????    ;
+Cap= (epsr*eps0)/(sigma*1e-3*R); %linha modificada
 %
 %      Resistencia dual
 %
-Rdual= ????????    ;
+Rdual= 1/(2*R*sigma*1e-3*1*sigma_dual*1e-3*1); %linha modificada
 % Densidade de carga:
 Dn=[Phi_new(2,1:Nx-1),Phi_new(1:Ny-1,Nx-1)',Phi_new(Ny-1,1:Nx-1),Phi_new(1:Ny-1,2)']*epsr*eps0/dx*100;
 ol=(1:length(Dn))-1;
@@ -258,7 +258,7 @@ ol=(1:length(Dn))-1;
 %
 %   Densidade Superficial de Carga Mínima
 %
-Rho_s_min =      ????????    ;
+Rho_s_min = max(Dn); 1/(2*R*sigma*1e-3*1*sigma_dual*1e-3*1); %linha modificada
 %
 figure (7);
 %
@@ -273,20 +273,20 @@ figure (7);
 %
 V=0:10:Vmax;
 %V(1)=1e-6; V(11)=V(11)-1e-6;
-[C,H]=contour(   ????????     );
+[C,H]=contour(Phi_new, V); %linha modificada
 clabel(C,V);
 axis('equal');
 hold on
 %
 % Equipotencias - Problema Dual (para traçado dos quadrados curvilíneos)
 %
-sp=   ?????   ;
+sp=(R/2)*sigma*1e-3*1; %linha modificada
 ntubos = 5/sp;
 disp(['Num. tubos = ',num2str(ntubos)]);
 dV = Vmax/ntubos;
 V = 0:dV:Vmax;
 %V(1)=1e-6; V(11)=V(11)-1e-6;
-[C,H]= contour(    ????????    );
+[C,H]= contour(Dual_new, V); %linha modificada
 axis('equal');
 hold off
 %
@@ -295,10 +295,10 @@ hold off
 disp('EP - 1 : ');
 fprintf('b= %d  c= %d  d= %d  g= %d  h= %1.1g  (valores em cm)\n', b,c,d,g,h);
 fprintf('eps_r= %1.1g   Sigma = %1.1g mS/m   Sigma_dual = %1.1g mS/m \n', epsr,sigma,sigma_dual);
-disp(['Densidade superficial de Carga mínima = ',num2str(Rho_s_min),'  nC/m^2']);  
-disp(['Resistência = ',num2str(R),'  ohms  ']);
-disp(['Capacitância = ',num2str(Cap),'  pF  ']);
-disp(['Resistência Dual = ',num2str(Rdual),'  ohms    ']);
+disp(['Densidade superficial de Carga mínima = ',num2str(Rho_s_min*1e9),'  nC/m^2']); %linha modificada
+disp(['Resistência = ',num2str(R),'  ohms  ']); %linha modificada
+disp(['Capacitância = ',num2str(Cap*1e12),'  pF  ']); %linha modificada
+disp(['Resistência Dual = ',num2str(Rdual),'  ohms    ']); %linha modificada
 %
 %  FIM
 %
