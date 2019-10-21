@@ -45,15 +45,15 @@ Ny=round(ly/dx)+1;
 %
 % figura 1 – Geometria do condutor
 %
-% figure(1);
+figure(1);
 xv = [0 a a 0 0 NaN g g g+c g+c g];
 yv = [0 0 b b 0 NaN h h+d h+d h h];
 %
 %  Traçado do problema
-% plot(xv,yv,'LineWidth',2)
-% text(a/4,b+1,'EC1 - Condutor retangular vazado - Geometria','Color','r')
-% grid on
-% axis ([-1 a+2 -1 b+2])
+plot(xv,yv,'LineWidth',2)
+text(a/4,b+1,'EC1 - Condutor retangular vazado - Geometria','Color','r')
+grid on
+axis ([-1 a+2 -1 b+2])
 %
 %   Discretização (geração da grade)
 %
